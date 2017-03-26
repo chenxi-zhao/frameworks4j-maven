@@ -15,6 +15,7 @@
         <module>structure-algorithms</module>
         <module>spring-ioc-aop</module>
         <module>messagequeue-demo</module>
+        <module>simple-servlet-container</module>
     </modules>
 
     <name>frameworks4j-maven</name>

@@ -1,1 +1,1 @@
-# frameworks4j-maven
+# frameworks4j-maven project
