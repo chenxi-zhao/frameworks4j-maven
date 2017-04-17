@@ -16,6 +16,7 @@
         <module>spring-ioc-aop</module>
         <module>messagequeue-demo</module>
         <module>simple-servlet-container</module>
+        <module>spring4-example</module>
     </modules>
 
     <name>frameworks4j-maven</name>
@@ -26,6 +27,8 @@
 
         <!-- aspectj version -->
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
+        <!--cglib-->
+        <cglib.version>3.2.5</cglib.version>
 
         <!-- spring版本 -->
         <spring.version>4.3.4.RELEASE</spring.version>

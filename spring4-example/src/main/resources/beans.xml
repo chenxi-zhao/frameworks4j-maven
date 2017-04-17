@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true">
+
+    <bean id="cStartEventHandler" class="com.chenxi.event.CStartEventHandler" />
+    <bean id="cStopEventHandler" class="com.chenxi.event.CStopEventHandler" />
+
+    <!--annotation注入-->
+    <context:annotation-config/>
+    <bean id="student" class="com.chenxi.di.annotation.Student">
+        <property name="age" value="24"/>
+        <property name="name" value="chenxi"/>
+    </bean>
+    <bean id="student1" class="com.chenxi.di.annotation.Student">
+        <property name="name" value="Zara"/>
+        <property name="age" value="11"/>
+    </bean>
+    <bean id="class" class="com.chenxi.di.annotation.Class"/>
+    <bean id="profile" class="com.chenxi.di.annotation.Profile"/>
+
+
+    <!--xml注入-->
+    <bean id="helloWorld" class="com.chenxi.model.HelloWorld">
+        <property name="message" value="Hello World!"/>
+        <property name="message2" value="Hello Second World"/>
+    </bean>
+
+    <!--生命周期-->
+    <bean id="lifecycle_helloWorld" class="com.chenxi.model.HelloWorld" init-method="init" destroy-method="destroy">
+        <property name="message" value="Hello World!"/>
+    </bean>
+
+    <!--beanpostprocessor-->
+    <!--<bean class="com.chenxi.model.InitHelloWorld"/>-->
+
+    <!--作用域-->
+    <bean id="singleton_helloWorld" class="com.chenxi.model.HelloWorld" scope="singleton"/>
+    <bean id="protorype_helloWorld" class="com.chenxi.model.HelloWorld" scope="prototype"/>
+
+    <!--bean继承-->
+    <bean id="helloIndia" class="com.chenxi.model.HelloIndia" parent="helloWorld">
+        <property name="message" value="Hello India!"/>
+        <property name="message3" value="Namaste India!"/>
+    </bean>
+
+    <!--构造注入 和 setter注入-->
+    <!--<bean id="textEditor" class="com.chenxi.model.TextEditor">-->
+    <!--<constructor-arg ref="spellChecker"/>-->
+    <!--</bean>-->
+    <bean id="setter_textEditor" class="com.chenxi.model.TextEditor">
+        <property name="spellChecker" ref="spellChecker"/>
+    </bean>
+    <bean id="spellChecker" class="com.chenxi.model.SpellChecker">
+        <constructor-arg type="java.lang.String" value="chenxi"/>
+    </bean>
+
+    <!--自动注入-->
+    <bean id="autoware_byName_textEditor" class="com.chenxi.model.TextEditor" autowire="byName"/>
+    <bean id="autoware_byType_textEditor" class="com.chenxi.model.TextEditor" autowire="byType"/>
+    <bean id="autoware_byCons_textEditor" class="com.chenxi.model.TextEditorCopy" autowire="constructor">
+        <constructor-arg value="Generic Text Editor"/>
+    </bean>
+
+    <!--注入集合-->
+    <bean id="javaCollection" class="com.chenxi.model.JavaCollection">
+        <!-- results in a setAddressList(java.util.List) call -->
+        <property name="addressList">
+            <list>
+                <value>INDIA</value>
+                <value>Pakistan</value>
+                <value>USA</value>
+                <value>USA</value>
+            </list>
+        </property>
+        <!-- results in a setAddressSet(java.util.Set) call -->
+        <property name="addressSet">
+            <set>
+                <value>INDIA</value>
+                <value>Pakistan</value>
+                <value>USA</value>
+                <value>USA</value>
+            </set>
+        </property>
+        <!-- results in a setAddressMap(java.util.Map) call -->
+        <property name="addressMap">
+            <map>
+                <entry key="1" value="INDIA"/>
+                <entry key="2" value="Pakistan"/>
+                <entry key="3" value="USA"/>
+                <entry key="4" value="USA"/>
+            </map>
+        </property>
+
+        <property name="addressProp">
+            <props>
+                <prop key="one">INDIA</prop>
+                <prop key="two">Pakistan</prop>
+                <prop key="three">USA</prop>
+                <prop key="four">USA</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

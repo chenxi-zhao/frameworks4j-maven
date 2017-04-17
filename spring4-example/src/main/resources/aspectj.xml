@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--<bean id="logging" class="com.chenxi.aop.Logging"/>-->
+    <!--<aop:config>-->
+    <!--<aop:aspect id="log" ref="logging">-->
+    <!--<aop:pointcut id="selectAll" expression="execution(* com.chenxi.aop.*.*(..))"/>-->
+    <!--<aop:before pointcut-ref="selectAll" method="beforeAdvice"/>-->
+    <!--<aop:after pointcut-ref="selectAll" method="afterAdvice"/>-->
+    <!--<aop:after-returning pointcut-ref="selectAll"-->
+    <!--returning="retVal"-->
+    <!--method="afterReturningAdvice"/>-->
+    <!--<aop:after-throwing pointcut-ref="selectAll"-->
+    <!--throwing="ex"-->
+    <!--method="AfterThrowingAdvice"/>-->
+    <!--</aop:aspect>-->
+    <!--</aop:config>-->
+    <!--<context:annotation-config/>-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean id="student" class="com.chenxi.aop.Student">
+        <property name="name" value="chenxi"/>
+        <property name="age" value="24"/>
+    </bean>
+
+    <bean id="log" class="com.chenxi.aop.LoggingAspectJ"/>
+</beans>
