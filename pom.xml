@@ -16,7 +16,8 @@
         <module>spring-ioc-aop</module>
         <module>messagequeue-demo</module>
         <module>simple-servlet-container</module>
-        <module>spring4-example</module>
+        <module>spring4-basic-example</module>
+        <module>rpc-spring-netty</module>
     </modules>
 
     <name>frameworks4j-maven</name>
@@ -77,6 +78,7 @@
         <commons-logging.version>1.2</commons-logging.version>
         <commons-pool2.version>2.3</commons-pool2.version>
         <commons-beanutils.version>1.9.2</commons-beanutils.version>
+        <commons-collections4.version>4.0</commons-collections4.version>
         <!-- apache-commons-end-->
 
         <!--引入elastic-job-lite-->

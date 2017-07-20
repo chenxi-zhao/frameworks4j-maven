@@ -2,7 +2,6 @@ package com.chenxi.javaconfig;
 
 import com.chenxi.model.HelloWorld;
 import com.chenxi.model.SpellChecker;
-import com.chenxi.model.TextEditor;
 import com.chenxi.model.TextEditorCopy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

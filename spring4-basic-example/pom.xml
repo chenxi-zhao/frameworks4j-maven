@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring4-example</artifactId>
+    <artifactId>spring4-basic-example</artifactId>
     <packaging>jar</packaging>
 
     <name>spring4-example</name>
