@@ -36,6 +36,7 @@ public class NIOServer {
 	public void listen() throws IOException {
 		while (true) {
 			int nKeys = selector.select(1000);
+			System.out.println("-----------------nKeys: " + nKeys);
 			if (nKeys > 0) {
 				Set<SelectionKey> selectionKeys = selector.selectedKeys();
 				Iterator<SelectionKey> iterator = selectionKeys.iterator();
@@ -70,7 +71,7 @@ public class NIOServer {
 			count = client.read(receiveBuffer);
 			if (count > 0) {
 				recieveText = new String(receiveBuffer.array(), 0, count);
-				System.out.println("服务端接收到客户端的消息：" + recieveText);
+				System.out.println("<<<<<<<<<服务端接收到客户端的消息：" + recieveText);
 				client.register(selector, SelectionKey.OP_WRITE);
 			}
 		} else if (selectionKey.isWritable()) {
@@ -81,8 +82,8 @@ public class NIOServer {
 			sendBuffer.put(sendText.getBytes());
 			sendBuffer.flip();
 			client.write(sendBuffer);
-			System.out.println("服务端发送数据给客户端：" + sendText);
-
+			System.out.println(">>>>>>>>>>>>>>>>>服务端发送数据给客户端：" + sendText);
+			client.register(selector, SelectionKey.OP_READ);
 		}
 	}
 

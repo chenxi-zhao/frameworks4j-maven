@@ -18,6 +18,7 @@
         <module>simple-servlet-container</module>
         <module>spring4-basic-example</module>
         <module>rpc-spring-netty</module>
+        <module>design-patterns</module>
     </modules>
 
     <name>frameworks4j-maven</name>
