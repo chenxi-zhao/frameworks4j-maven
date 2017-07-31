@@ -24,12 +24,12 @@ public class BucketSort {
 	/**
 	 * 桶排序算法，对arr进行桶排序，排序结果仍放在arr中
 	 * 
-	 * @param arr
+	 * @param array
 	 */
 	public static void bucketSort(int[] array) {
-		ArrayList<ArrayList<Integer>> bucket = new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<Integer>> bucket = new ArrayList<>();
 		for (int i = 0; i < BUCKET_SIZE; i++) {
-			bucket.add(new ArrayList<Integer>());
+			bucket.add(new ArrayList<>());
 		}
 
 		// 划分桶并填元素
