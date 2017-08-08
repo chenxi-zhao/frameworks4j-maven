@@ -11,18 +11,19 @@
 
     <!--<bean id="logging" class="com.chenxi.aop.Logging"/>-->
     <!--<aop:config>-->
-    <!--<aop:aspect id="log" ref="logging">-->
-    <!--<aop:pointcut id="selectAll" expression="execution(* com.chenxi.aop.*.*(..))"/>-->
-    <!--<aop:before pointcut-ref="selectAll" method="beforeAdvice"/>-->
-    <!--<aop:after pointcut-ref="selectAll" method="afterAdvice"/>-->
-    <!--<aop:after-returning pointcut-ref="selectAll"-->
-    <!--returning="retVal"-->
-    <!--method="afterReturningAdvice"/>-->
-    <!--<aop:after-throwing pointcut-ref="selectAll"-->
-    <!--throwing="ex"-->
-    <!--method="AfterThrowingAdvice"/>-->
-    <!--</aop:aspect>-->
+        <!--<aop:aspect id="log" ref="logging">-->
+            <!--<aop:pointcut id="selectAll" expression="execution(* com.chenxi.aop.*.*(..))"/>-->
+            <!--<aop:before pointcut-ref="selectAll" method="beforeAdvice"/>-->
+            <!--<aop:after pointcut-ref="selectAll" method="afterAdvice"/>-->
+            <!--<aop:after-returning pointcut-ref="selectAll"-->
+                                 <!--returning="retVal"-->
+                                 <!--method="afterReturningAdvice"/>-->
+            <!--<aop:after-throwing pointcut-ref="selectAll"-->
+                                <!--throwing="ex"-->
+                                <!--method="AfterThrowingAdvice"/>-->
+        <!--</aop:aspect>-->
     <!--</aop:config>-->
+
     <!--<context:annotation-config/>-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <bean id="student" class="com.chenxi.aop.Student">

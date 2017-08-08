@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="methodCount" class="cn.spring.aop.MethodInvokeCountAdvice" />
+	<bean id="methodCount" class="com.chenxi.aop.MethodInvokeCountAdvice" />
 
-	<bean id="methodLogger" class="cn.spring.aop.MethodLoggerAdvice" />
+	<bean id="methodLogger" class="com.chenxi.aop.MethodLoggerAdvice" />
 
-	<bean id="bussinessService" class="cn.spring.aop.BussinessServiceImpl" />
+	<bean id="bussinessService" class="com.chenxi.aop.BussinessServiceImpl" />
 
 	<bean id="methodProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="proxyInterfaces">
