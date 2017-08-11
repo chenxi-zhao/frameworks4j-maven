@@ -1,7 +1,7 @@
 package com.chenxi.algorithm.sort;
 
 /**
- * 堆排序
+ * 堆排序（基于优先级队列，Priority Queue）
  * 
  * 不稳定算法，时间复杂度O(N*lgN)。
  * 
@@ -41,6 +41,8 @@ public class HeapSort {
 
 	/*
 	 * 堆排序(从小到大)
+	 *
+	 * http://images.cnitblog.com/blog/94031/201403/022349560186587.png
 	 *
 	 * 参数说明： array--待排序的数组
 	 */

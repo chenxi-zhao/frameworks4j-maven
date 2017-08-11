@@ -401,6 +401,41 @@ public class RedBlackTree<T extends Comparable<T>> {
 	}
 
 	/**
+	 * 2/3树实现
+	 public override void Put(TKey key, TValue value)
+	 {
+	 root = Put(root, key, value);
+	 root.Color = BLACK;
+	 }
+
+	 private void flipColors(Node h) {
+	 assert !isRed(h);
+	 assert isRed(h.left);
+	 assert isRed(h.right);
+	 h.color = RED;
+	 h.left.color = BLACK;
+	 h.right.color = BLACK;
+	 }
+	 http://brianway.github.io/2016/10/14/algorithms-data-structures-2/
+	 private Node Put(Node h, TKey key, TValue value)
+	 {
+	 if (h == null) return new Node(key, value, 1, RED);
+	 int cmp = key.CompareTo(h.Key);
+	 if (cmp < 0) h.Left = Put(h.Left, key, value);
+	 else if (cmp > 0) h.Right = Put(h.Right, key, value);
+	 else h.Value = value;
+
+	 //平衡化操作
+	 if (IsRed(h.Right) && !IsRed(h.Left)) h = RotateLeft(h);
+	 if (IsRed(h.Left) && IsRed(h.Left.Left)) h = RotateRight(h);
+	 if (IsRed(h.Left) && IsRed(h.Right)) h = FlipColor(h);
+
+	 h.Number = Size(h.Left) + Size(h.Right) + 1;
+	 return h;
+	 }
+	 */
+
+	/**
 	 * 红黑树插入修正函数
 	 * 
 	 * 在向红黑树中插入节点之后(失去平衡)，再调用该函数； 目的是将它重新塑造成一颗红黑树。
