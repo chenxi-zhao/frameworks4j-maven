@@ -1,4 +1,4 @@
-package com.chenxi.rpc.server.service;
+package com.chenxi.rpc.service;
 
 import com.chenxi.rpc.server.anotation.RpcService;
 

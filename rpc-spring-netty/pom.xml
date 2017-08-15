@@ -38,7 +38,7 @@
             <version>${netty.version}</version>
         </dependency>
 
-        <!-- Protostuff -->
+        <!-- Protostuff 序列化-->
         <dependency>
             <groupId>com.dyuproject.protostuff</groupId>
             <artifactId>protostuff-core</artifactId>
@@ -64,7 +64,7 @@
             <version>${commons-collections4.version}</version>
         </dependency>
 
-        <!-- Objenesis -->
+        <!-- Objenesis 反射-->
         <dependency>
             <groupId>org.objenesis</groupId>
             <artifactId>objenesis</artifactId>

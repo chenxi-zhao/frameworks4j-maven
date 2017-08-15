@@ -1,4 +1,4 @@
-package com.chenxi.di.annotation;
+package com.chenxi.ioc.annotation;
 
 import org.springframework.beans.factory.annotation.Required;
 

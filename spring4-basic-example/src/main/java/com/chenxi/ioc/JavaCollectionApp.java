@@ -1,4 +1,4 @@
-package com.chenxi.di;
+package com.chenxi.ioc;
 
 import com.chenxi.model.JavaCollection;
 import org.springframework.context.ApplicationContext;

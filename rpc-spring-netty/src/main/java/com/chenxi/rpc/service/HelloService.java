@@ -1,4 +1,4 @@
-package com.chenxi.rpc.server.service;
+package com.chenxi.rpc.service;
 
 /**
  * Created by chenxi on 2017/6/6.

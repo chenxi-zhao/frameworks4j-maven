@@ -13,16 +13,16 @@
 
     <!--annotation注入-->
     <context:annotation-config/>
-    <bean id="student" class="com.chenxi.di.annotation.Student">
+    <bean id="student" class="com.chenxi.ioc.annotation.Student">
         <property name="age" value="24"/>
         <property name="name" value="chenxi"/>
     </bean>
-    <bean id="student1" class="com.chenxi.di.annotation.Student">
+    <bean id="student1" class="com.chenxi.ioc.annotation.Student">
         <property name="name" value="Zara"/>
         <property name="age" value="11"/>
     </bean>
-    <bean id="class" class="com.chenxi.di.annotation.Class"/>
-    <bean id="profile" class="com.chenxi.di.annotation.Profile"/>
+    <bean id="class" class="com.chenxi.ioc.annotation.Class"/>
+    <bean id="profile" class="com.chenxi.ioc.annotation.Profile"/>
 
 
     <!--xml注入-->
