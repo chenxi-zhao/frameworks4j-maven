@@ -9,7 +9,7 @@ public class TestDistributedSimpleQueue {
 		
 		
 		ZkClient zkClient = new ZkClient("192.168.208.128:2181", 5000, 5000, new SerializableSerializer());
-		DistributedSimpleQueue<User> queue = new DistributedSimpleQueue<User>(zkClient,"/Queue");
+		DistributedSimpleQueue<User> queue = new DistributedSimpleQueue<>(zkClient,"/Queue");
 		
 		User user1 = new User();
 		user1.setId("1");

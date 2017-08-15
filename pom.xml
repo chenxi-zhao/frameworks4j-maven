@@ -19,6 +19,7 @@
         <module>spring4-basic-example</module>
         <module>rpc-spring-netty</module>
         <module>design-patterns</module>
+        <module>netty-action</module>
     </modules>
 
     <name>frameworks4j-maven</name>

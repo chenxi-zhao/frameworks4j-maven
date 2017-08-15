@@ -1,10 +1,10 @@
 package com.chenxi.zookeeper.queue;
 
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-
 import org.I0Itec.zkclient.IZkChildListener;
 import org.I0Itec.zkclient.ZkClient;
+
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class DistributedBlockingQueue<T> extends DistributedSimpleQueue<T> {
 
@@ -20,10 +20,8 @@ public class DistributedBlockingQueue<T> extends DistributedSimpleQueue<T> {
 
 			final CountDownLatch latch = new CountDownLatch(1);
 			final IZkChildListener childListener = new IZkChildListener() {
-
 				public void handleChildChange(String parentPath, List<String> currentChilds) throws Exception {
 					latch.countDown();
-
 				}
 			};
 			zkClient.subscribeChildChanges(root, childListener);

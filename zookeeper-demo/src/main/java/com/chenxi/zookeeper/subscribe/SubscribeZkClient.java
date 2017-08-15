@@ -1,39 +1,47 @@
 package com.chenxi.zookeeper.subscribe;
 
+import org.I0Itec.zkclient.ZkClient;
+import org.I0Itec.zkclient.serialize.BytesPushThroughSerializer;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.I0Itec.zkclient.ZkClient;
-import org.I0Itec.zkclient.serialize.BytesPushThroughSerializer;
-
 public class SubscribeZkClient {
 
+	//需要多少个workserver
 	private static final int CLIENT_QTY = 5;
 
-	private static final String ZOOKEEPER_SERVER = "192.168.208.128:2181";
+	private static final String ZOOKEEPER_SERVER = "127.0.0.1:2181";
 
-	private static final String CONFIG_PATH = "/config";
-	private static final String COMMAND_PATH = "/command";
-	private static final String SERVERS_PATH = "/servers";
+	// 节点的路径
+	private static final String CONFIG_PATH = "/config"; // 配置节点
+	private static final String COMMAND_PATH = "/command"; // 命令节点
+	private static final String SERVERS_PATH = "/servers"; // 服务器列表节点
 
 	public static void main(String[] args) throws Exception {
 
-		List<ZkClient> clients = new ArrayList<ZkClient>();
-		List<WorkServer> workServers = new ArrayList<WorkServer>();
-		ManageServer manageServer = null;
+		// 用来存储所有的clients
+		List<ZkClient> clients = new ArrayList<>();
+		//用来存储所有的workservers
+		List<WorkServer> workServers = new ArrayList<>();
 
+		ManageServer manageServer = null;
 		try {
 			ServerConfig initConfig = new ServerConfig();
 			initConfig.setDbPwd("123456");
 			initConfig.setDbUrl("jdbc:mysql://localhost:3306/mydb");
 			initConfig.setDbUser("root");
 
+
 			ZkClient clientManage = new ZkClient(ZOOKEEPER_SERVER, 5000, 5000, new BytesPushThroughSerializer());
+
+			// 创建管理服务器
 			manageServer = new ManageServer(SERVERS_PATH, COMMAND_PATH, CONFIG_PATH, clientManage, initConfig);
 			manageServer.start();
 
+			// 根据定义的work服务个数，创建服务器后注册，然后启动
 			for (int i = 0; i < CLIENT_QTY; ++i) {
 				ZkClient client = new ZkClient(ZOOKEEPER_SERVER, 5000, 5000, new BytesPushThroughSerializer());
 				clients.add(client);

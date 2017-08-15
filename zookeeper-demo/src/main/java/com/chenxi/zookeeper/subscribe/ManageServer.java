@@ -1,14 +1,13 @@
 package com.chenxi.zookeeper.subscribe;
 
-import java.util.List;
-
+import com.alibaba.fastjson.JSON;
 import org.I0Itec.zkclient.IZkChildListener;
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.exception.ZkNoNodeException;
 import org.I0Itec.zkclient.exception.ZkNodeExistsException;
 
-import com.alibaba.fastjson.JSON;
+import java.util.List;
 
 public class ManageServer {
 	// 服务器集群节点地址
@@ -17,6 +16,7 @@ public class ManageServer {
 	private String commandPath;
 	// 配置信息存储地址
 	private String configPath;
+
 	private ZkClient zkClient;
 	// 配置信息
 	private ServerConfig config;
@@ -30,12 +30,13 @@ public class ManageServer {
 			ServerConfig config) {
 		this.serversPath = serversPath;
 		this.commandPath = commandPath;
+		this.configPath = configPath;
+
 		this.zkClient = zkClient;
 		this.config = config;
-		this.configPath = configPath;
+
 		this.childListener = new IZkChildListener() {
 			public void handleChildChange(String parentPath, List<String> currentChilds) throws Exception {
-				// TODO Auto-generated method stub
 				workServerList = currentChilds;
 				System.out.println("work server list changed, new list is ");
 				execList();
@@ -57,7 +58,10 @@ public class ManageServer {
 	}
 
 	private void initRunning() {
+		// 订阅命令节点
 		zkClient.subscribeDataChanges(commandPath, dataListener);
+
+		// 订阅服务器集群节点
 		zkClient.subscribeChildChanges(serversPath, childListener);
 	}
 
@@ -105,6 +109,9 @@ public class ManageServer {
 		}
 	}
 
+	/**
+	 * 启动
+	 */
 	public void start() {
 		initRunning();
 	}

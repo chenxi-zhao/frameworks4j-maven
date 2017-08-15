@@ -12,7 +12,7 @@ public class LeaderSelectorZkClient {
 	// 启动的服务个数
 	private static final int CLIENT_QTY = 10;
 	// zookeeper服务器的地址
-	private static final String ZOOKEEPER_SERVER = "192.168.208.128:2181";
+	private static final String ZOOKEEPER_SERVER = "127.0.0.1:2181";
 
 	public static void main(String[] args) throws Exception {
 		// 保存所有zkClient的列表

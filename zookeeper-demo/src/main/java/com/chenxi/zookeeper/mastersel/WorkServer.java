@@ -1,9 +1,5 @@
 package com.chenxi.zookeeper.mastersel;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.exception.ZkException;
@@ -11,6 +7,10 @@ import org.I0Itec.zkclient.exception.ZkInterruptedException;
 import org.I0Itec.zkclient.exception.ZkNoNodeException;
 import org.I0Itec.zkclient.exception.ZkNodeExistsException;
 import org.apache.zookeeper.CreateMode;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class WorkServer {
 
@@ -34,6 +34,8 @@ public class WorkServer {
 		this.dataListener = new IZkDataListener() {
 			public void handleDataDeleted(String dataPath) throws Exception {
 				// takeMaster();
+				// 适应网络抖动
+				// 若之前master为本机,则立即抢主,否则延迟5秒抢主(防止小故障引起的抢主可能导致的网络数据风暴)
 				if (masterData != null && masterData.getName().equals(serverData.getName())) {
 					takeMaster();
 				} else {
@@ -59,6 +61,11 @@ public class WorkServer {
 		this.zkClient = zkClient;
 	}
 
+	/**
+	 * 启动订阅master节点，然后抢master节点
+	 *
+	 * @throws Exception
+	 */
 	public void start() throws Exception {
 		if (running) {
 			throw new Exception("server has startup...");
@@ -87,9 +94,12 @@ public class WorkServer {
 		if (!running)
 			return;
 		try {
+			// 创建临时节点，session连接失败自动删除
 			zkClient.create(MASTER_PATH, serverData, CreateMode.EPHEMERAL);
 			masterData = serverData;
 			System.out.println(serverData.getName() + " is master");
+
+			// 测试使用，每5秒释放master节点
 			delayExector.schedule(new Runnable() {
 				public void run() {
 					if (checkMaster()) {
@@ -98,7 +108,10 @@ public class WorkServer {
 				}
 			}, delayTime, TimeUnit.SECONDS);
 		} catch (ZkNodeExistsException e) {
+			//如果master节点已经存在读取
 			RunningData runningData = zkClient.readData(MASTER_PATH, true);
+
+			//数据为空说明此时master宕机
 			if (runningData == null) {
 				takeMaster();
 			} else {

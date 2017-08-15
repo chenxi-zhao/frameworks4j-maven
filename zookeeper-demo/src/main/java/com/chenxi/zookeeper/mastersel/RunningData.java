@@ -3,10 +3,6 @@ package com.chenxi.zookeeper.mastersel;
 import java.io.Serializable;
 
 public class RunningData implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4260577459043203630L;
 
 	private Long cid;

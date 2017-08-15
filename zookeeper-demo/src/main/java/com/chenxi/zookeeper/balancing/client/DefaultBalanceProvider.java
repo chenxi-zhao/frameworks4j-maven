@@ -1,12 +1,12 @@
 package com.chenxi.zookeeper.balancing.client;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.chenxi.zookeeper.balancing.server.ServerData;
 import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.serialize.SerializableSerializer;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class DefaultBalanceProvider extends AbstractBalanceProvider<ServerData> {
 
@@ -37,7 +37,7 @@ public class DefaultBalanceProvider extends AbstractBalanceProvider<ServerData> 
 
 	@Override
 	protected List<ServerData> getBalanceItems() {
-		List<ServerData> sdList = new ArrayList<ServerData>();
+		List<ServerData> sdList = new ArrayList<>();
 		List<String> children = zc.getChildren(this.serversPath);
 		for (int i = 0; i < children.size(); i++) {
 			ServerData sd = zc.readData(serversPath + "/" + children.get(i));
