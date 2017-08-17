@@ -20,6 +20,8 @@
         <module>rpc-spring-netty</module>
         <module>design-patterns</module>
         <module>netty-action</module>
+        <module>mybatis-action</module>
+        <module>mybatis-spring4-springmvc</module>
     </modules>
 
     <name>frameworks4j-maven</name>
@@ -28,42 +30,82 @@
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 
+        <!--类操作，反射-->
         <!-- aspectj version -->
-        <aspectjweaver.version>1.8.9</aspectjweaver.version>
+        <aspectj.version>1.8.9</aspectj.version>
         <!--cglib-->
         <cglib.version>3.2.5</cglib.version>
+        <!--objenesis-->
+        <objenesis.version>2.1</objenesis.version>
 
+
+        <!--web框架版本-->
         <!-- spring版本 -->
         <spring.version>4.3.4.RELEASE</spring.version>
+        <!-- cxf版本-->
+        <cxf.version>3.1.8</cxf.version>
+
+
+        <!--分布式服务等-->
+        <!--引入elastic-job-lite-->
+        <elastic-job-lite.version>2.0.3</elastic-job-lite.version>
+        <!-- redis version -->
+        <spring-data-redis.version>1.7.5.RELEASE</spring-data-redis.version>
+        <jedis.version>2.9.0</jedis.version>
+        <!--zookeeper version-->
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <zkclient.version>0.5</zkclient.version>
+        <zkcurator.version>2.8.0</zkcurator.version>
+        <!--message queue-->
+        <rabbitmq.version>3.6.5</rabbitmq.version>
+        <activemq.version>5.7.0</activemq.version>
+
+
+        <!--数据库框架版本-->
         <!-- hibernate5版本-->
         <hibernate5.version>5.2.5.Final</hibernate5.version>
+        <!--mybatis-->
+        <mybatis.version>3.4.4</mybatis.version>
+        <mybatis-generator.version>1.3.5</mybatis-generator.version>
+        <!--jdbc-->
+        <jdbc-mysql.version>6.0.6</jdbc-mysql.version>
+        <!-- 阿里巴巴数据源包版本 -->
+        <druid.version>1.1.2</druid.version>
 
+
+        <!--JavaWeb框架版本-->
         <!-- jsp版本 -->
         <jsp.version>2.0</jsp.version>
         <!-- servlet版本 -->
         <servlet.version>3.1.0</servlet.version>
+        <!--taglib-->
+        <taglib.version>1.2.5</taglib.version>
+        <!--jstl-->
+        <jstl.version>1.2</jstl.version>
 
-        <!-- dom4j版本 -->
+
+        <!--数据格式化-->
+        <!-- dom4j版本 xml -->
         <dom4j.version>1.6.1</dom4j.version>
-        <!-- slf4j版本 -->
-        <slf4j.version>1.7.5</slf4j.version>
-        <!-- log4j版本 -->
-        <log4j.version>1.2.17</log4j.version>
-        <!-- freemarker版本 -->
-        <freemarker.version>2.3.20</freemarker.version>
-
-        <!-- mysql版本 -->
-        <mysql.version>5.1.28</mysql.version>
-        <!-- 阿里巴巴数据源包版本 -->
-        <druid.version>1.0.27</druid.version>
-
+        <!--jdom version xml-->
+        <jdom.version>2.0.6</jdom.version>
         <!-- jackson版本 -->
         <jackson.version>2.8.5</jackson.version>
         <!-- fastjson版本 -->
         <fastjson.version>1.2.16</fastjson.version>
+        <!--protostuff serilization-->
+        <protostuff.version>1.0.8</protostuff.version>
 
-        <!-- cxf版本-->
-        <cxf.version>3.1.8</cxf.version>
+
+        <!--日志-->
+        <!-- slf4j版本 -->
+        <slf4j.version>1.7.5</slf4j.version>
+        <!-- log4j版本 -->
+        <log4j.version>1.2.17</log4j.version>
+
+
+        <!-- freemarker版本 -->
+        <freemarker.version>2.3.20</freemarker.version>
 
         <!--netty version-->
         <netty.version>5.0.0.Alpha2</netty.version>
@@ -71,7 +113,6 @@
         <!-- apache http版本-->
         <apache.httpcomponents.version>4.5.2</apache.httpcomponents.version>
         <commons-httpclient.version>3.1</commons-httpclient.version>
-
         <!-- apache-commons -->
         <commons-codec.version>1.10</commons-codec.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
@@ -82,25 +123,6 @@
         <commons-beanutils.version>1.9.2</commons-beanutils.version>
         <commons-collections4.version>4.0</commons-collections4.version>
         <!-- apache-commons-end-->
-
-        <!--引入elastic-job-lite-->
-        <elastic-job-lite.version>2.0.3</elastic-job-lite.version>
-
-        <!-- redis version -->
-        <spring-data-redis.version>1.7.5.RELEASE</spring-data-redis.version>
-        <jedis.version>2.9.0</jedis.version>
-
-        <!--zookeeper version-->
-        <zookeeper.version>3.4.6</zookeeper.version>
-        <zkclient.version>0.5</zkclient.version>
-        <zkcurator.version>2.8.0</zkcurator.version>
-
-        <!--message queue-->
-        <rabbitmq.version>3.6.5</rabbitmq.version>
-        <activemq.version>5.7.0</activemq.version>
-
-        <!--jdom version-->
-        <jdom.version>2.0.6</jdom.version>
     </properties>
 
     <repositories>

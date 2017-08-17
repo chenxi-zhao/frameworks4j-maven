@@ -81,7 +81,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <!-- hibernate -->
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
+            <version>${jdbc-mysql.version}</version>
         </dependency>
 
         <!-- 阿里巴巴数据源包 -->
