@@ -26,10 +26,10 @@
 
     <!--<context:annotation-config/>-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
-    <bean id="student" class="com.chenxi.aop.Student">
+    <bean id="student" class="com.chenxi.spring4basic.aop.Student">
         <property name="name" value="chenxi"/>
         <property name="age" value="24"/>
     </bean>
 
-    <bean id="log" class="com.chenxi.aop.LoggingAspectJ"/>
+    <bean id="log" class="com.chenxi.spring4basic.aop.LoggingAspectJ"/>
 </beans>

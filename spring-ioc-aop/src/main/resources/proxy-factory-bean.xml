@@ -4,11 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="methodCount" class="com.chenxi.aop.MethodInvokeCountAdvice" />
+	<bean id="methodCount" class="com.chenxi.springiocaop.aop.MethodInvokeCountAdvice" />
 
-	<bean id="methodLogger" class="com.chenxi.aop.MethodLoggerAdvice" />
+	<bean id="methodLogger" class="com.chenxi.springiocaop.aop.MethodLoggerAdvice" />
 
-	<bean id="bussinessService" class="com.chenxi.aop.BussinessServiceImpl" />
+	<bean id="bussinessService" class="com.chenxi.springiocaop.aop.BussinessServiceImpl" />
 
 	<bean id="methodProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="proxyInterfaces">

@@ -8,31 +8,31 @@
             http://www.springframework.org/schema/context/spring-context.xsd"
        default-lazy-init="true">
 
-    <bean id="cStartEventHandler" class="com.chenxi.event.CStartEventHandler" />
-    <bean id="cStopEventHandler" class="com.chenxi.event.CStopEventHandler" />
+    <bean id="cStartEventHandler" class="com.chenxi.spring4basic.event.CStartEventHandler" />
+    <bean id="cStopEventHandler" class="com.chenxi.spring4basic.event.CStopEventHandler" />
 
     <!--annotation注入-->
     <context:annotation-config/>
-    <bean id="student" class="com.chenxi.ioc.annotation.Student">
+    <bean id="student" class="com.chenxi.spring4basic.ioc.annotation.Student">
         <property name="age" value="24"/>
         <property name="name" value="chenxi"/>
     </bean>
-    <bean id="student1" class="com.chenxi.ioc.annotation.Student">
+    <bean id="student1" class="com.chenxi.spring4basic.ioc.annotation.Student">
         <property name="name" value="Zara"/>
         <property name="age" value="11"/>
     </bean>
-    <bean id="class" class="com.chenxi.ioc.annotation.Class"/>
-    <bean id="profile" class="com.chenxi.ioc.annotation.Profile"/>
+    <bean id="class" class="com.chenxi.spring4basic.ioc.annotation.Class"/>
+    <bean id="profile" class="com.chenxi.spring4basic.ioc.annotation.Profile"/>
 
 
     <!--xml注入-->
-    <bean id="helloWorld" class="com.chenxi.model.HelloWorld">
+    <bean id="helloWorld" class="com.chenxi.spring4basic.model.HelloWorld">
         <property name="message" value="Hello World!"/>
         <property name="message2" value="Hello Second World"/>
     </bean>
 
     <!--生命周期-->
-    <bean id="lifecycle_helloWorld" class="com.chenxi.model.HelloWorld" init-method="init" destroy-method="destroy">
+    <bean id="lifecycle_helloWorld" class="com.chenxi.spring4basic.model.HelloWorld" init-method="init" destroy-method="destroy">
         <property name="message" value="Hello World!"/>
     </bean>
 
@@ -40,11 +40,11 @@
     <!--<bean class="com.chenxi.model.InitHelloWorld"/>-->
 
     <!--作用域-->
-    <bean id="singleton_helloWorld" class="com.chenxi.model.HelloWorld" scope="singleton"/>
-    <bean id="protorype_helloWorld" class="com.chenxi.model.HelloWorld" scope="prototype"/>
+    <bean id="singleton_helloWorld" class="com.chenxi.spring4basic.model.HelloWorld" scope="singleton"/>
+    <bean id="protorype_helloWorld" class="com.chenxi.spring4basic.model.HelloWorld" scope="prototype"/>
 
     <!--bean继承-->
-    <bean id="helloIndia" class="com.chenxi.model.HelloIndia" parent="helloWorld">
+    <bean id="helloIndia" class="com.chenxi.spring4basic.model.HelloIndia" parent="helloWorld">
         <property name="message" value="Hello India!"/>
         <property name="message3" value="Namaste India!"/>
     </bean>
@@ -53,22 +53,22 @@
     <!--<bean id="textEditor" class="com.chenxi.model.TextEditor">-->
     <!--<constructor-arg ref="spellChecker"/>-->
     <!--</bean>-->
-    <bean id="setter_textEditor" class="com.chenxi.model.TextEditor">
+    <bean id="setter_textEditor" class="com.chenxi.spring4basic.model.TextEditor">
         <property name="spellChecker" ref="spellChecker"/>
     </bean>
-    <bean id="spellChecker" class="com.chenxi.model.SpellChecker">
+    <bean id="spellChecker" class="com.chenxi.spring4basic.model.SpellChecker">
         <constructor-arg type="java.lang.String" value="chenxi"/>
     </bean>
 
     <!--自动注入-->
-    <bean id="autoware_byName_textEditor" class="com.chenxi.model.TextEditor" autowire="byName"/>
-    <bean id="autoware_byType_textEditor" class="com.chenxi.model.TextEditor" autowire="byType"/>
-    <bean id="autoware_byCons_textEditor" class="com.chenxi.model.TextEditorCopy" autowire="constructor">
+    <bean id="autoware_byName_textEditor" class="com.chenxi.spring4basic.model.TextEditor" autowire="byName"/>
+    <bean id="autoware_byType_textEditor" class="com.chenxi.spring4basic.model.TextEditor" autowire="byType"/>
+    <bean id="autoware_byCons_textEditor" class="com.chenxi.spring4basic.model.TextEditorCopy" autowire="constructor">
         <constructor-arg value="Generic Text Editor"/>
     </bean>
 
     <!--注入集合-->
-    <bean id="javaCollection" class="com.chenxi.model.JavaCollection">
+    <bean id="javaCollection" class="com.chenxi.spring4basic.model.JavaCollection">
         <!-- results in a setAddressList(java.util.List) call -->
         <property name="addressList">
             <list>
