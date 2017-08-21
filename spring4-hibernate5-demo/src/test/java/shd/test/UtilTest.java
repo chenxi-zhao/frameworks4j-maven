@@ -44,7 +44,7 @@ public class UtilTest {
 
     @Test
     public void get() {
-        User user = userDao.get("from User", User.class);
+        User user = userDao.get("from User");
         System.out.println(JSON.toJSONString(user));
     }
 

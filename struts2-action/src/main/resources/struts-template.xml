@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!-- 所有匹配*.action的请求都由struts2处理 -->
+    <constant name="struts.action.extension" value="action"/>
+    <!-- 是否启用开发模式 -->
+    <constant name="struts.devMode" value="true"/>
+    <!-- struts配置文件改动后，是否重新加载 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <!-- 设置浏览器是否缓存静态内容 -->
+    <constant name="struts.serve.static.browserCache" value="false"/>
+    <!-- 请求参数的编码方式 -->
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+    <constant name="struts.i18n.reload" value="true"/>
+    <!-- 文件上传最大值 -->
+    <constant name="struts.multipart.maxSize" value="104857600"/>
+    <!-- 让struts2支持动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!-- Action名称中是否还是用斜线 -->
+    <constant name="struts.enable.SlashesInActionNames" value="false"/>
+    <!-- 允许标签中使用表达式语法 -->
+    <constant name="struts.tag.altSyntax" value="true"/>
+    <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
+
+    <!-- include节点是struts2中组件化的方式 可以将每个功能模块独立到一个xml配置文件中 然后用include节点引用 -->
+    <!--<include file="struts-default.xml"></include>-->
+
+
+    <!--package提供了将多个Action组织为一个模块的方式,package的名字必须是唯一的,package可以扩展,当一个package扩展自另一个package时,
+        该package会在本身配置的基础上加入扩展的package的配置,父package必须在子package前配置。
+        package:包
+        name：包名，唯一的，必选项
+        namespace：命名空间，唯一的，相当于房间号。可选项，省略情况下是“/”
+        extends:继承
+        extends=“struts-default”：struts2框架底层提供的核心包struts2-core-2.3.3.jar下的struts-default.xml文件
+        为什么要继承这个struts-default.xml文件，因为struts框架底层提供的struts-default.xml声明了所有的拦截器和拦截器栈。
+        我们知道struts2框架运行时执行struts-default.xml中的拦截器栈完成必要功能。如果不继承struts-default.xml文件，就没有办法使用struts2提供的所有拦截器。-->
+    <package name="root" namespace="/" extends="struts-default">
+        <interceptors>
+            <!-- 定义拦截器 name:拦截器名称 class:拦截器类路径 -->
+            <interceptor name="timer" class="com.kay.timer"/>
+            <interceptor name="logger" class="com.kay.logger"/>
+            <!-- 定义拦截器栈 -->
+            <interceptor-stack name="mystack">
+                <interceptor-ref name="timer"/>
+                <interceptor-ref name="logger"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 定义默认的拦截器, 每个Action都会自动引用, 如果Action中引用了其它的拦截器, 默认的拦截器将无效 -->
+        <default-interceptor-ref name="mystack"/>
+
+        <!-- 全局results配置 -->
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <!--Action配置 一个Action可以被多次映射(只要action配置中的name不同)-->
+        <!--name：action名称 class: 对应的类的路径  method: 调用Action中的方法名-->
+        <action name="hello" class="com.chenxi.struts2.action.HelloWorldAction" method="execute">
+            <!-- 引用拦截器 name:拦截器名称或拦截器栈名称 -->
+            <!--<interceptor-ref name="timer"/>-->
+
+            <!--节点配置 name : result名称和Action中返回的值相同 type:result类型 不写则选用superpackage的type -->
+            <!--struts-default.xml中的默认为dispatcher-->
+            <result name="success">/HelloWorld.jsp</result>
+        </action>
+
+        <action name="computeAction" class="com.struts.ComputeAction" >
+            <result name="computePage" >/compute.jsp</result>
+        </action>
+
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+    </package>
+</struts>

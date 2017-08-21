@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <constant name="struts.multipart.maxSize" value="20971520"/>
+
+    <package name="loginVerify" extends="json-default">
+        <action name="UserRequest" class="com.chenxi.struts2.action.UserLoginAction">
+            <result type="json" name="LOGIN_SUCCESS"/>
+            <result type="redirect" name="LOGINOUT_SUCCESS">index.jsp</result>
+        </action>
+    </package>
+
+
+    <package name="data" extends="struts-default">
+        <action name="Member" class="com.chenxi.struts2.action.MemberAction">
+            <result type="redirect" name="LOGIN_SUCCESS">/background/index.jsp</result>
+            <result type="redirect" name="LOGINOUT_SUCCESS">/background/login.jsp</result>
+            <result type="redirect" name="LOGIN_FAIL">/background/login.jsp</result>
+            <result type="redirect" name="success">/background/index.jsp</result>
+        </action>
+        <action name="Blog" class="com.chenxi.struts2.action.BlogAction">
+            <result type="redirect" name="success">/background/index.jsp</result>
+            <result type="redirect" name="BLOG_SINGLE">blog-single.jsp</result>
+        </action>
+        <action name="Project" class="com.chenxi.struts2.action.ProjectAction">
+            <result type="redirect" name="success">/background/index.jsp</result>
+            <result type="redirect" name="PROJECT_SINGLE">project-single.jsp</result>
+        </action>
+        <action name="Service" class="com.chenxi.struts2.action.ServiceAction">
+            <result type="redirect" name="success">/background/index.jsp</result>
+        </action>
+        <action name="Comment" class="com.chenxi.struts2.action.CommentAction">
+            <result type="redirect" name="ADD_BLOGCOMMENT_SU">blog-single.jsp</result>
+            <result type="redirect" name="ADD_PROJECTCOMMENT_SU">project-single.jsp</result>
+            <result type="redirect" name="BLOG_SINGLE">blog-single.jsp</result>
+        </action>
+
+
+        <action name="BgMenubar" class="com.chenxi.struts2.action.BgMenubarAction">
+            <result type="redirect" name="success">/background/index.jsp</result>
+        </action>
+        <action name="DividePage" class="com.chenxi.struts2.action.DividePageAction">
+            <result type="redirect" name="success">/background/index.jsp</result>
+        </action>
+        <action name="FrontPage" class="com.chenxi.struts2.action.FrontPageAction">
+            <result type="redirect" name="BLOG_PAGING_SU">blog.jsp</result>
+            <result type="redirect" name="PROJECT_PAGING_SU">project.jsp</result>
+        </action>
+    </package>
+
+    <package name="FileManage" extends="struts-default">
+        <action name="IndexImg" class="com.chenxi.struts2.action.IndexImgAction">
+            <result type="redirect" name="success">index.jsp</result>
+        </action>
+    </package>
+
+</struts>

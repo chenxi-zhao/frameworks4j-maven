@@ -30,8 +30,20 @@
     <!-- @ResponseBody将内容或对象作为 HTTP 响应正文返回，并调用适合HttpMessageConverter的Adapter转换对象，写入输出流 -->
     <!-- @Scope("prototype") 设定bean的作用域 -->
 
-    <!-- 启用spring mvc 注解 -->
-    <!-- <context:annotation-config /> -->
+    <!--<context:component-scan>做了<context:annotation-config>要做的事情，还额外支持@Component，@Repository，@Service，@Controller注解。-->
+    <!--<context:component-scan>扫描base-package并且在application context中注册扫描的beans.-->
+    <!--所以配置<context:component-scan>就不需要配置<context:annotation-config/>-->
+
+
+    <!--<context:annotation-config/>-->
+    <!--1.如果你想使用@Autowired注解，那么就必须事先在 spring 容器中声明 AutowiredAnnotationBeanPostProcessor Bean。-->
+    <!--2.如果想使用@Resource 、@PostConstruct、@PreDestroy等注解就必须声明CommonAnnotationBeanPostProcessor-->
+    <!--3.如果想使用@PersistenceContext注解，就必须声明PersistenceAnnotationBeanPostProcessor的Bean。-->
+    <!--4.如果想使用 @Required的注解，就必须声明RequiredAnnotationBeanPostProcessor的Bean。-->
+    <!--使用<context:annotation-config/>隐式地向 Spring容器注册这4个BeanPostProcessor-->
+    <!--即<context:annotation-config/>是用来使上述注解起作用的，也就是说激活已经在application context中注册的bean。-->
+    <!--对于没有在spring容器中注册的bean，它并不能执行任何操作-->
+
 
     <!-- 开启注解方案1 -->
     <!-- 注解方法处理 -->
@@ -41,6 +53,20 @@
 
     <!-- 开启注解方案2 -->
     <mvc:annotation-driven/>
+    <!--对应的类是 AnnotationDrivenBeanDefinitionParser 这个类主要是用来向工厂中注册了-->
+    <!--RequestMappingHandlerMapping：处理@RequestMapping注解的。-->
+    <!--BeanNameUrlHandlerMapping：将controller类的名字映射为请求url。-->
+    <!--RequestMappingHandlerAdapter 处理@Controller注解的处理器，支持自定义方法参数和返回值（很酷）-->
+    <!--HttpRequestHandlerAdapter 处理继承HttpRequestHandler的处理器-->
+    <!--SimpleControllerHandlerAdapter 处理继承自Controller接口的处理器-->
+    <!--ExceptionHandlerExceptionResolver 处理异常的解析器-->
+    <!--ResponseStatusExceptionResolver 处理异常的解析器-->
+    <!--DefaultHandlerExceptionResolver 处理异常的解析器-->
+    <!--另外还将提供以下支持：-->
+    <!--① 支持使用ConversionService实例对表单参数进行类型转换；-->
+    <!--② 支持使用@NumberFormatannotation、@DateTimeFormat注解完成数据类型的格式化；-->
+    <!--③ 支持使用@Valid注解对Java bean实例进行JSR 303验证；-->
+    <!--④ 支持使用@RequestBody和@ResponseBody注解-->
 
     <!-- 静态资源访问，方案1 -->
     <!--<mvc:resources mapping="/static/**" location="/static/" />
@@ -58,27 +84,27 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <!-- Spring MVC JSON配置 -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                    <property name="supportedMediaTypes">
-                        <list>
-                            <value>text/plain;charset=UTF-8</value>
-                        </list>
-                    </property>
-                </bean>
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                    <property name="supportedMediaTypes">
-                        <list>
-                            <value>application/json;charset=UTF-8</value>
-                        </list>
-                    </property>
-                </bean>
-            </list>
-        </property>
-    </bean>
+    <!--&lt;!&ndash; Spring MVC JSON配置 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+    <!--<property name="messageConverters">-->
+    <!--<list>-->
+    <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--<list>-->
+    <!--<value>text/plain;charset=UTF-8</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--<list>-->
+    <!--<value>application/json;charset=UTF-8</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
 
     <!-- 文件上传配置 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -96,11 +122,11 @@
     <!-- 拦截器 -->
     <mvc:interceptors>
         <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**" />-->
-            <!--<bean class="com.weixin.core.interceptors.EncodingInterceptor" />-->
+        <!--<mvc:mapping path="/**" />-->
+        <!--<bean class="com.weixin.core.interceptors.EncodingInterceptor" />-->
         <!--</mvc:interceptor>-->
         <mvc:interceptor>
-            <mvc:mapping path="/**" />
+            <mvc:mapping path="/**"/>
             <bean class="com.chenxi.spring4hibernate.interceptors.AuthInterceptor">
                 <!-- 不需要权限验证的地址  -->
                 <property name="excludeUrls">

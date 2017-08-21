@@ -10,6 +10,7 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!-- 设置为close使Spring容器关闭同时数据源能够正常关闭，以免造成连接泄露 -->
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="url" value="${jdbc_url}"/>
         <property name="username" value="${jdbc_username}"/>
@@ -66,7 +67,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.formate_sql">true</prop>
                 <prop key="hibernate.hbm2ddl">update</prop>
-
+                <!-- 配置current session的上下文环境，方便我们调用sessionFactory获取当前线程统一个session对象 -->
                 <prop key="current_session_context_class">thread</prop>
             </props>
         </property>
@@ -81,7 +82,7 @@
 
     <!-- 配置事务管理器 在*ServiceImpl里写@Transactional就可以启用事务管理 -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"></property>
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <!-- 第一种方式: 注解方式配置事务 -->
@@ -117,7 +118,7 @@
     <!-- 第四个 .. —— 通配 方法可以有0个或多个参数 -->
     <!-- 事务控制位置，一般在业务层service -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.chenxi.spring4hibernate.service..*Impl.*(..))" />
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.chenxi.spring4hibernate.service.*.*Impl.*(..))" />
         <!-- 多个 expression="(execution(* com.weixin.spring4hibernate.service..*Impl.*(..)))or(execution(* org.weixin.service..*Impl.*(..)))" -->
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
     </aop:config>
