@@ -61,7 +61,7 @@
     </bean>
 
     <!--自动注入-->
-    <bean id="autoware_byName_textEditor" class="com.chenxi.spring4basic.model.TextEditor" autowire="byName"/>
+    <!--<bean id="autoware_byName_textEditor" class="com.chenxi.spring4basic.model.TextEditor" autowire="byName"/>-->
     <bean id="autoware_byType_textEditor" class="com.chenxi.spring4basic.model.TextEditor" autowire="byType"/>
     <bean id="autoware_byCons_textEditor" class="com.chenxi.spring4basic.model.TextEditorCopy" autowire="constructor">
         <constructor-arg value="Generic Text Editor"/>

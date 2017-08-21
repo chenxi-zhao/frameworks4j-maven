@@ -12,8 +12,8 @@ public class SpringAopApp {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("aspectj.xml");
         Student student = (Student)context.getBean("student");
-        student.getName();
-        student.getAge();
+//        student.getName();
+//        student.getAge();
         student.printThrowException();
     }
 }

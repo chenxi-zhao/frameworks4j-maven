@@ -12,7 +12,7 @@ public class LoggingAspectJ {
     /**
      * Following is the definition for a pointcut to select * all the methods available. So advice will be called * for all the methods.
      */
-    @Pointcut("execution(* com.chenxi.aop.*.*(..))")
+    @Pointcut("execution(* com.chenxi.spring4basic.aop.*.*(..))")
     private void selectAll() {
     }
 

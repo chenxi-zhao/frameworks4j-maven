@@ -75,6 +75,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- aspectjweaver这是Spring AOP所要用到的包,后者引入cglib -->

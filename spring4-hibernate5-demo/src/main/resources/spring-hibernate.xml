@@ -64,7 +64,13 @@
         <property name="dataSource" ref="dataSource" />
         <property name="hibernateProperties">
             <props>
+                <!--&lt;!&ndash; Enable EhCache &ndash;&gt;-->
+                <!--<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>-->
+                <!--<prop key="hibernate.cache.use_second_level_cache">true</prop>-->
+                <!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
+
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.formate_sql">true</prop>
                 <prop key="hibernate.hbm2ddl">update</prop>
                 <!-- 配置current session的上下文环境，方便我们调用sessionFactory获取当前线程统一个session对象 -->
@@ -118,7 +124,7 @@
     <!-- 第四个 .. —— 通配 方法可以有0个或多个参数 -->
     <!-- 事务控制位置，一般在业务层service -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.chenxi.spring4hibernate.service.*.*Impl.*(..))" />
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.chenxi.spring4hibernate.service.*Impl.*(..))" />
         <!-- 多个 expression="(execution(* com.weixin.spring4hibernate.service..*Impl.*(..)))or(execution(* org.weixin.service..*Impl.*(..)))" -->
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
     </aop:config>
