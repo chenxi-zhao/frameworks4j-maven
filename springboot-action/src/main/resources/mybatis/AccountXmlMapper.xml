@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chenxi.springboot.dao.AccountXmlMapper">
+    <resultMap id="accountList" type="Account">
+        <id property="id" column="id" javaType="java.lang.Integer"/>
+        <result property="name" column="name" javaType="java.lang.String"/>
+        <result property="money" column="money" javaType="java.lang.Double"/>
+    </resultMap>
+
+
+    <insert id="add">
+        insert into account(name, money) values(#{name}, #{money})
+    </insert>
+
+    <update id="update">
+        UPDATE account set money=#{money} WHERE id=#{id}
+    </update>
+
+    <delete id="delete">
+        delete from account where id = #{id}
+    </delete>
+
+    <select id="findAccount" resultType="Account">
+        select id, name as name, money as money from account where id = #{id}
+    </select>
+
+    <select id="findAccountList" resultMap="accountList">
+        select id, name as name, money as money from account
+    </select>
+</mapper>

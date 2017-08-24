@@ -7,7 +7,7 @@ import com.rabbitmq.client.QueueingConsumer;
 
 public class WorkQueue_Work {
 	// 队列名称
-	private final static String QUEUE_NAME = "workqueue_persistence";
+	private final static String QUEUE_NAME = "workqueue";
 
 	public static void main(String[] argv) throws Exception {
 		// 区分不同工作进程的输出
@@ -32,7 +32,7 @@ public class WorkQueue_Work {
 		QueueingConsumer consumer = new QueueingConsumer(channel);
 
 		// 指定消费队列
-		// 不自动会发ack，由channel.basicAck()在消息处理完成后发送消息
+		// 不自动发ack，由channel.basicAck()在消息处理完成后发送消息
 		boolean ack = false; // 打开应答机制
 		channel.basicConsume(QUEUE_NAME, ack, consumer);
 

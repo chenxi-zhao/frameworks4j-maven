@@ -24,6 +24,7 @@
         <module>mybatis-spring4-springmvc</module>
         <module>struts2-action</module>
         <module>hibernate-action</module>
+        <module>springboot-action</module>
     </modules>
 
     <name>frameworks4j-maven</name>
@@ -45,7 +46,7 @@
 
         <!--web框架版本-->
         <!-- spring版本 -->
-        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
         <!--struts2-->
         <struts2.version>2.5.12</struts2.version>
         <!-- cxf版本-->

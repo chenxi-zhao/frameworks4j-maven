@@ -19,6 +19,8 @@ public class PubSub_RecvLogsToConsole {
 		// 创建一个非持久的、唯一的且自动删除的队列
 		String queueName = channel.queueDeclare().getQueue();
 		// 为转发器指定队列，设置binding
+		// channel.queueBind()的第三个参数Routing key为空，即所有的消息都接收。
+		// 如果这个值不为空，在exchange type为“fanout”方式下该值被忽略！
 		channel.queueBind(queueName, EXCHANGE_NAME, "");
 
 		System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
