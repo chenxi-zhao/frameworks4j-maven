@@ -6,15 +6,15 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>redis-jedis-demo</module>
+        <module>redis-jedis-action</module>
         <module>cxf-java-ws</module>
-        <module>spring4-hibernate5-demo</module>
+        <module>spring4-hibernate5-action</module>
         <module>elastic-job-spring4</module>
-        <module>java-core-demo</module>
-        <module>zookeeper-demo</module>
+        <module>java-core-action</module>
+        <module>zookeeper-action</module>
         <module>structure-algorithms</module>
         <module>spring-ioc-aop</module>
-        <module>messagequeue-demo</module>
+        <module>messagequeue-action</module>
         <module>simple-servlet-container</module>
         <module>spring4-basic-example</module>
         <module>rpc-spring-netty</module>
@@ -25,6 +25,7 @@
         <module>struts2-action</module>
         <module>hibernate-action</module>
         <module>springboot-action</module>
+        <module>lucene-action</module>
     </modules>
 
     <name>frameworks4j-maven</name>
@@ -51,7 +52,11 @@
         <struts2.version>2.5.12</struts2.version>
         <!-- cxf版本-->
         <cxf.version>3.1.8</cxf.version>
+        <!--shiro-->
+        <shiro.version>1.4.0</shiro.version>
 
+        <!--搜索、文件系统-->
+        <lucene.version>6.6.0</lucene.version>
 
         <!--分布式服务等-->
         <!--引入elastic-job-lite-->
