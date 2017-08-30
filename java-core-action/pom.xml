@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>java-core-demo</artifactId>
+    <artifactId>java-core-action</artifactId>
     <packaging>jar</packaging>
 
-    <name>java-core-demo</name>
+    <name>java-core-action</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -33,6 +33,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
         </dependency>
         <!-- apache common依赖结束-->
     </dependencies>
