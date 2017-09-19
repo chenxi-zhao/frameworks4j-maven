@@ -26,6 +26,7 @@
         <module>hibernate-action</module>
         <module>springboot-action</module>
         <module>lucene-action</module>
+        <module>distribute-solutions</module>
     </modules>
 
     <name>frameworks4j-maven</name>
