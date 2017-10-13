@@ -10,8 +10,24 @@ import java.util.Random;
  */
 public class RandomOneKWNumber {
     public static void main(String[] args) {
-        createRandom();
-        createRandom4();
+//        createRandom();
+//        createRandom4();
+        String str1 = "aaa";
+        String str2 = "bbb";
+
+        String str3 = "aaa" + "bbb";
+
+        String str4 = "aaa" + str2;
+
+        System.out.println(str3 == str4);
+        System.out.println(str3 == "aaabbb");
+
+        StringBuffer sb = new StringBuffer("aaa");
+        System.out.println(str1 == sb.toString());
+
+        sb.append("bbb");
+        System.out.println(str3 == sb.toString());
+        System.out.println(str4 == sb.toString());
     }
 
     private static void createRandom() {
@@ -19,7 +35,7 @@ public class RandomOneKWNumber {
         Random random = new Random();
         long start = System.currentTimeMillis();
 
-        int value = 100;
+        int value = 10;
 
         ArrayList<Integer> list = new ArrayList<>(value);
         for (int j = 1; j <= value; ++j) {
@@ -32,12 +48,18 @@ public class RandomOneKWNumber {
         int randomRandom = 0;
 
         while (value > 0) {
+            // 生成一个随机的索引值（范围越来越小）
             index = random.nextInt(value);
-            // System.out.println(list.get(index));
+
+            // 1. 假设index为20，randomRandom为21，serialRandom为1，交换第0个和第20个数
+            // 2. 假设index为50，randomRandom为51，serialRandom为2，交换第1个和第50个数
+             System.out.println(index);
+            // count + index保证 每一次
             randomRandom = list.get(count + index) == 0 ? count + 1 + index : list.get(count + index);
+            // 当前位上的随机数，用于与已生成的做转移
             serialRandom = list.get(count) == 0 ? count + 1 : list.get(count);
 
-            // 交换序列数
+            // 把已生成的索引位置的数放到，交换序列数
             list.set(count + index, serialRandom);
             // 依次给每一位设置一个随机数
             list.set(count, randomRandom);
@@ -49,12 +71,12 @@ public class RandomOneKWNumber {
 
         //----验证是否正确
         /**
-        Collections.sort(list);
-        int i = 0, size = list.size();
-        for (; i < size; ++i) {
-            if (list.get(i) != (i + 1))
-                System.out.println(i + "error" + list.get(i));
-        }*/
+         Collections.sort(list);
+         int i = 0, size = list.size();
+         for (; i < size; ++i) {
+         if (list.get(i) != (i + 1))
+         System.out.println(i + "error" + list.get(i));
+         }*/
         //----验证是否正确
 
         for (int j = 0; j < list.size(); j++) {

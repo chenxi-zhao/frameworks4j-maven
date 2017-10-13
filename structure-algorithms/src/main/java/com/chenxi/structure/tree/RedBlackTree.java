@@ -402,38 +402,53 @@ public class RedBlackTree<T extends Comparable<T>> {
 
 	/**
 	 * 2/3树实现
-	 public override void Put(TKey key, TValue value)
-	 {
-	 root = Put(root, key, value);
-	 root.Color = BLACK;
-	 }
+	public override void Put(TKey key, TValue value){
+		root = Put(root, key, value);
+		root.Color = BLACK;
+	}
 
-	 private void flipColors(Node h) {
-	 assert !isRed(h);
-	 assert isRed(h.left);
-	 assert isRed(h.right);
-	 h.color = RED;
-	 h.left.color = BLACK;
-	 h.right.color = BLACK;
-	 }
-	 http://brianway.github.io/2016/10/14/algorithms-data-structures-2/
-	 private Node Put(Node h, TKey key, TValue value)
-	 {
-	 if (h == null) return new Node(key, value, 1, RED);
-	 int cmp = key.CompareTo(h.Key);
-	 if (cmp < 0) h.Left = Put(h.Left, key, value);
-	 else if (cmp > 0) h.Right = Put(h.Right, key, value);
-	 else h.Value = value;
+	private void flipColors(Node h) {
+		assert !isRed(h);
+		assert isRed(h.left);
+		assert isRed(h.right);
+		h.color = RED;
+		h.left.color = BLACK;
+		h.right.color = BLACK;
+	}
+	private bool IsRed(Node node){
+		if (node == null)
+			return false;
+		return node.Color == RED;
+	}
 
-	 //平衡化操作
-	 if (IsRed(h.Right) && !IsRed(h.Left)) h = RotateLeft(h);
-	 if (IsRed(h.Left) && IsRed(h.Left.Left)) h = RotateRight(h);
-	 if (IsRed(h.Left) && IsRed(h.Right)) h = FlipColor(h);
+	// http://brianway.github.io/2016/10/14/algorithms-data-structures-2/
+	private Node Put(Node h, TKey key, TValue value){
+		if (h == null)
+			return new Node(key, value, 1, RED);
+		int cmp = key.CompareTo(h.Key);
 
-	 h.Number = Size(h.Left) + Size(h.Right) + 1;
-	 return h;
-	 }
-	 */
+		if (cmp < 0)
+			h.Left = Put(h.Left, key, value);
+		else if (cmp > 0)
+			h.Right = Put(h.Right, key, value);
+		else h.Value = value;
+
+		// 平衡化操作
+		// 左节点不是红色（黑色），右子节点红色
+		if (!IsRed(h.Left) && IsRed(h.Right))
+			h = RotateLeft(h);
+	    // 左子节点和左孙子节点都是红色
+		if (IsRed(h.Left) && IsRed(h.Left.Left))
+			h = RotateRight(h);
+	    // 左右子节点都是红色
+		if (IsRed(h.Left) && IsRed(h.Right))
+			h = FlipColor(h);
+
+		h.Number = Size(h.Left) + Size(h.Right) + 1;
+
+		return h;
+	}
+	*/
 
 	/**
 	 * 红黑树插入修正函数

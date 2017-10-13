@@ -1,6 +1,8 @@
 package com.chenxi.structure.tree;
 
+import java.util.ArrayDeque;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -24,6 +26,45 @@ public class BinarySearchTree<T extends Comparable<T>> {
             this.left = left;
             this.right = right;
         }
+    }
+
+    public int getMaxDepth(BSTNode root) {
+        if (root == null)
+            return 0;
+        else {
+            int left = getMaxDepth(root.left);
+            int right = getMaxDepth(root.right);
+            return 1 + Math.max(left, right);
+        }
+    }
+
+    // 获取最大宽度/深度
+    public int getMaxWidth(BSTNode root) {
+        if (root == null)
+            return 0;
+
+        Queue<BSTNode> queue = new ArrayDeque<BSTNode>();
+        int maxWitdth = 1; // 最大宽度
+        int level = 0; // 求最大深度
+        queue.add(root); // 入队
+
+        // 一层一层遍历
+        while (true) {
+            int len = queue.size(); // 当前层的节点个数
+            if (len == 0)
+                break;
+            while (len > 0) {// 如果当前层，还有节点
+                BSTNode t = queue.poll();
+                len--;
+                if (t.left != null)
+                    queue.add(t.left); // 下一层节点入队
+                if (t.right != null)
+                    queue.add(t.right);// 下一层节点入队
+            }
+            maxWitdth = Math.max(maxWitdth, queue.size());
+            level++;
+        }
+        return maxWitdth;
     }
 
     /**
