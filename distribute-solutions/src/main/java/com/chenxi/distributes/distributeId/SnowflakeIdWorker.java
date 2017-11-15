@@ -203,11 +203,13 @@ public class SnowflakeIdWorker {
      * 测试
      */
     public static void main(String[] args) {
+        long startTime = System.nanoTime();
         SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 50000; i++) {
             long id = idWorker.nextId();
             System.out.println(Long.toBinaryString(id));
             System.out.println(id);
         }
+        System.out.println((System.nanoTime()-startTime)/1000000+"ms");
     }
 }
