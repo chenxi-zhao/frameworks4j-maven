@@ -27,6 +27,7 @@
         <module>springboot-action</module>
         <module>lucene-action</module>
         <module>distribute-solutions</module>
+        <module>elasticsearch-action</module>
     </modules>
 
     <name>frameworks4j-maven</name>
