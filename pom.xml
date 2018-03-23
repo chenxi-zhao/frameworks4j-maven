@@ -8,25 +8,18 @@
     <modules>
         <module>redis-jedis-action</module>
         <module>cxf-java-ws</module>
-        <module>spring4-hibernate5-action</module>
+        <module>hibernate5-spring4-action</module>
         <module>elastic-job-spring4</module>
-        <module>java-core-action</module>
         <module>zookeeper-action</module>
-        <module>structure-algorithms</module>
-        <module>spring-ioc-aop</module>
         <module>messagequeue-action</module>
-        <module>simple-servlet-container</module>
-        <module>spring4-basic-example</module>
-        <module>rpc-spring-netty</module>
-        <module>design-patterns</module>
+        <module>spring4-basic-action</module>
         <module>netty-action</module>
         <module>mybatis-action</module>
         <module>mybatis-spring4-springmvc</module>
         <module>struts2-action</module>
-        <module>hibernate-action</module>
+        <module>hibernate5-action</module>
         <module>springboot-action</module>
         <module>lucene-action</module>
-        <module>distribute-solutions</module>
         <module>elasticsearch-action</module>
     </modules>
 
