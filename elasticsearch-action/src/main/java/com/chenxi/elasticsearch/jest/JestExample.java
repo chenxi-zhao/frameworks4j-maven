@@ -13,7 +13,6 @@ import io.searchbox.core.*;
 import io.searchbox.indices.*;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.elasticsearch.search.highlight.HighlightBuilder;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -312,12 +311,12 @@ public class JestExample {
         JestClient jestClient = JestExample.getJestClient();
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
-        HighlightBuilder highlightBuilder = new HighlightBuilder();
-        highlightBuilder.field("title");//高亮title
-        highlightBuilder.field("content");//高亮content
-        highlightBuilder.preTags("<em>").postTags("</em>");//高亮标签
-        highlightBuilder.fragmentSize(200);//高亮内容长度
-        searchSourceBuilder.highlight(highlightBuilder);
+//        HighlightBuilder highlightBuilder = new HighlightBuilder();
+//        highlightBuilder.field("title");//高亮title
+//        highlightBuilder.field("content");//高亮content
+//        highlightBuilder.preTags("<em>").postTags("</em>");//高亮标签
+//        highlightBuilder.fragmentSize(200);//高亮内容长度
+//        searchSourceBuilder.highlight(highlightBuilder);
         Search search = new Search.Builder(searchSourceBuilder.toString())
                 .addIndex("article")
                 .build();
